@@ -22,19 +22,11 @@ function rate() {
 </script>
 <template>
   <section>
-    <div>
-      <table>
-        <tbody>
-          <tr>
-            <td>{{ project.name }}</td>
-            <td>{{ project.description }}</td>
-            <td>{{ project.createdAt }}</td>
-            <td>
-              <span @click="rate()"> {{ project.stars }} </span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <td>{{ project.name }}</td>
+    <td>{{ project.description }}</td>
+    <td>{{ project.createdAt }}</td>
+    <td>
+      <span @click="rate()"> {{ project.stars }} </span>
+    </td>
   </section>
 </template>

@@ -4,10 +4,10 @@ import Project from './Project.vue'
 import { useProjectStore } from '../../stores/ProjectStore.js'
 let store = useProjectStore()
 let storageFull = localStorage.length
-onMounted(() => {
+onMounted(async () => {
   console.log(storageFull)
   if (storageFull === 0) {
-    store.fetchProjects()
+    await store.fetchProjects()
   }
 })
 
@@ -32,12 +32,12 @@ let searchProject = computed(() => {
         </tr>
       </thead>
       <tbody>
-        <tr v-for="project in searchProject" :key="project.name">
+        <tr v-for="project in searchProject" :key="project.id">
           <td>{{ project.name }}</td>
           <td>{{ project.description }}</td>
           <td>{{ project.createdAt }}</td>
           <td>
-            <span @click="rate()"> {{ project.stars }} </span>
+            <span @click="store.rateProject(project.id, project.stars)"> {{ project.stars }} </span>
           </td>
         </tr>
       </tbody>

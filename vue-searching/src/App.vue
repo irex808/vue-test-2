@@ -25,9 +25,6 @@ import ProjectFilters from './components/projects/ProjectFilters.vue'
 </template>
 
 <style scoped>
-header {
-}
-
 .logo {
   display: block;
   margin: 0 auto 2rem;

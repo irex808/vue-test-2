@@ -4,7 +4,8 @@ import axios from 'axios'
 export const useProjectStore = defineStore('projects', {
     state: () => ({
         projects: [],
-        searchProjects: []
+        searchProjects: [],
+        projectsStars: []
     }),
     getters: {
         getProjects(state) {
@@ -29,8 +30,16 @@ export const useProjectStore = defineStore('projects', {
         },
         async fetchProjects() {
             try {
-                const data = await axios.get('http://localhost:3004/projects')
-                this.projects = data.data
+                const { data } = await axios.get('http://localhost:3004/projects')
+                this.projects = data
+                this.searchProjects = this.projects
+
+                this.projects.forEach(project => {
+                    this.projectsStars.push({ 'id': project.id, 'stars': project.stars })
+                })
+
+                console.log(this.projectsStars);
+
             } catch (error) {
                 console.log(error)
             }
@@ -38,21 +47,20 @@ export const useProjectStore = defineStore('projects', {
         setSearchedProjects(value) {
             console.log(value)
             if (value === 'Most Stars') {
-                const projectsStorage = useProjectStore()
-                console.log(projectsStorage)
-                let projectsStar = projectsStorage.sortByStars()
-                console.log(projectsStar)
-                this.searchProjects = projectsStar.slice(0, 3)
+                this.searchProjects = this.projects
+                this.searchProjects = this.sortByStars().slice(0, 3)
                 return this.searchProjects
             }
+
             this.searchProjects = this.projects.filter(function (project) {
                 let something = project.name.includes(value)
                 return something
             })
+
             return this.searchProjects
         },
         sortByName() {
-            return this.projects.sort(function (a, b) {
+            return this.searchProjects.sort(function (a, b) {
                 let nameA = a.name.toLowerCase(),
                     nameB = b.name.toLowerCase()
                 if (nameA < nameB) {
@@ -65,7 +73,7 @@ export const useProjectStore = defineStore('projects', {
             })
         },
         sortByStars() {
-            return this.projects.sort(function (a, b) {
+            const a = this.searchProjects.sort(function (a, b) {
                 if (a.stars < b.stars) {
                     return 1
                 }
@@ -74,15 +82,33 @@ export const useProjectStore = defineStore('projects', {
                 }
                 return 0
             })
+
+            console.log("SBSBSB", a, this.searchProjects)
+            return a
         },
-        rateProject(name) {
-            console.log(name)
-            let index = this.searchProjects.findIndex((project) => {
-                return project.name === name
-            })
-            console.log(this.searchProjects[index].stars)
-            let stars = this.searchProjects[index].stars++
-            console.log(stars)
+
+        rateProject(id, stars) {
+            console.log("rate id: " + id);
+            console.log("rate stars: " + stars);
+            let oldStars = this.projectsStars.find(project => { return project.id === id });
+            console.log(oldStars)
+            if (oldStars.stars === stars) {
+                this.searchProjects.forEach(project => {
+                    if (project.id === id) {
+                        project.stars = project.stars + 1;
+                        console.log(project.stars)
+                    }
+                });
+            } else {
+                this.searchProjects.forEach(project => {
+                    if (project.id === id) {
+                        project.stars = project.stars - 1;
+                        console.log(project.stars);
+                    }
+                });
+            }
+
+            this.searchProjects = this.sortByStars()
         }
     },
     persist: true
