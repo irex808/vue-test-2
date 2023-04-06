@@ -38,15 +38,11 @@ export const useProjectStore = defineStore('projects', {
     setSearchedProjects(value){
         console.log(value)
         if(value === "Most Stars"){
-           this.searchProjects = this.projects.sort(function (a, b) {
-                if (a.stars < b.stars) {
-                  return 1;
-                }
-                if (a.stars > b.stars) {
-                  return -1;
-                }
-                return 0;
-              }).slice(0,3);
+        const projectsStorage = useProjectStore();
+        console.log(projectsStorage);
+           let projectsStar = projectsStorage.sortByStars();
+           console.log(projectsStar);
+           this.searchProjects = projectsStar.slice(0,3);
               return this.searchProjects;
         }
             this.searchProjects = this.projects.filter(function (project) { 
@@ -55,7 +51,7 @@ export const useProjectStore = defineStore('projects', {
                 return this.searchProjects;
     },
     sortByName(){
-             this.projects.sort(function (a, b) {
+            return this.projects.sort(function (a, b) {
             let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
             if (nameA < nameB) {
               return -1;
@@ -67,7 +63,7 @@ export const useProjectStore = defineStore('projects', {
           });
     },
     sortByStars(){
-            this.projects.sort(function (a, b) {
+           return this.projects.sort(function (a, b) {
             if (a.stars < b.stars) {
               return 1;
             }

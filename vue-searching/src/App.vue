@@ -17,7 +17,7 @@ import ProjectFilters from './components/projects/ProjectFilters.vue';
       <div id="divsearch">
         <SearchBar id="search" />
       </div>
-      <div>
+      <div class="text-xs">
         <ProjectFilters />
       </div>
       </div>
