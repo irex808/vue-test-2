@@ -10,7 +10,6 @@ import ProjectFilters from './components/projects/ProjectFilters.vue';
 
     <div class="wrapper">
       <nav>
-        <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/projects">Projects</RouterLink>
         <RouterLink to="/create">New Project</RouterLink>
