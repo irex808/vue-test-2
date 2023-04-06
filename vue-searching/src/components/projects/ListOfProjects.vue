@@ -21,7 +21,7 @@ let searchProject = computed(() => {
 </script>
 
 <template>
-  <div v-if="searchProject.length !== 0">
+  <div>
     <table class="border border-red-500">
       <thead>
         <tr>
@@ -42,19 +42,5 @@ let searchProject = computed(() => {
         </tr>
       </tbody>
     </table>
-  </div>
-
-  <div v-else>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Date</th>
-          <th>Stars</th>
-        </tr>
-      </thead>
-    </table>
-    <Project v-for="project in projects" :key="project.name" :project="project" />
   </div>
 </template>

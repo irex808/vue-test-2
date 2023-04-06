@@ -1,26 +1,24 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import SearchBar from './components/projects/SearchBar.vue';
-import ProjectFilters from './components/projects/ProjectFilters.vue';
+import SearchBar from './components/projects/SearchBar.vue'
+import ProjectFilters from './components/projects/ProjectFilters.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <header class="py-4 flex justify-between items-center">
+    <img alt="Vue logo" class="h-8 w-auto" src="@/assets/logo.svg" width="125" height="125" />
 
-    <div class="wrapper">
+    <div class="flex items-center">
       <nav>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/projects">Projects</RouterLink>
         <RouterLink to="/create">New Project</RouterLink>
       </nav>
-      <div id="divsearch">
-        <SearchBar id="search" />
-      </div>
-      <div class="text-xs">
-        <ProjectFilters />
-      </div>
-      </div>
+
+      <SearchBar id="search" />
+
+      <ProjectFilters />
+    </div>
   </header>
 
   <RouterView />
@@ -28,20 +26,11 @@ import ProjectFilters from './components/projects/ProjectFilters.vue';
 
 <style scoped>
 header {
-  line-height: 1.5;
-  max-height: 20vh;
 }
 
 .logo {
   display: block;
   margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
 }
 
 nav a.router-link-exact-active {
@@ -89,14 +78,6 @@ nav a:first-of-type {
     display: flex;
     place-items: flex-start;
     flex-wrap: nowrap;
-  }
-
-  nav {
-    text-align: center;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
   }
 }
 </style>
