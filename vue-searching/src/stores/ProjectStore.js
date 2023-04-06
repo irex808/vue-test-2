@@ -73,7 +73,8 @@ export const useProjectStore = defineStore('projects', {
             return 0;
           });
     }
-  }
+  },
+  persist:true
 });
 
 
