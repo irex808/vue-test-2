@@ -3,8 +3,11 @@ import { computed, onMounted } from 'vue';
 import Project from './Project.vue';
 import { useProjectStore } from '../../stores/ProjectStore.js';
 let store = useProjectStore();
+let storageFull = localStorage.length;
 onMounted(() => {
+        if(storageFull === null){
   store.fetchProjects();
+        }
 });
 
 let projects = computed(() => { return store.getProjects})
