@@ -37,7 +37,7 @@ let project = ref({ name: 'something', description: 'anything', createdAt: '', s
       placeholder="stars"
     />
     <button
-      class="border rounded-md mx-2 focus:outline-none focus:border-gray-500 focus:ring-gray-500 hover:bg-gray-50"
+      class="border rounded-md mx-2 px-3 focus:outline-none focus:border-gray-500 focus:ring-gray-500 hover:bg-gray-50"
       @click="store.addProject(project)"
     >
       Save
