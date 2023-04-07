@@ -85,7 +85,6 @@ export const useProjectStore = defineStore('projects', {
             const dates = this.searchProjects.sort(function (a, b) {
                 return Number(new Date(a.createdAt)) - Number(new Date(b.createdAt));
             });
-            console.log(dates);
             return dates;
         },
 
