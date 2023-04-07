@@ -15,7 +15,7 @@ import ProjectFilters from './components/projects/ProjectFilters.vue'
         <RouterLink to="/create">New Project</RouterLink>
       </nav>
 
-      <SearchBar id="search" />
+      <SearchBar id="search" class="mx-4" />
 
       <ProjectFilters />
     </div>
@@ -48,15 +48,8 @@ nav a:first-of-type {
   border: 0;
 }
 
-#divsearch {
-  vertical-align: middle;
-  padding-top: 34px;
-}
-
 #search {
   text-align: center;
-  width: 90px;
-  border: 1px;
   border-color: black;
 }
 
