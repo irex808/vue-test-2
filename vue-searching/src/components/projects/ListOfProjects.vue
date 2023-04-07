@@ -5,7 +5,6 @@ import { useProjectStore } from '../../stores/ProjectStore.js'
 let store = useProjectStore()
 let storageFull = localStorage.length
 onMounted(async () => {
-  console.log(storageFull)
   if (storageFull === 0) {
     await store.fetchProjects()
   }

@@ -37,15 +37,11 @@ export const useProjectStore = defineStore('projects', {
                 this.projects.forEach(project => {
                     this.projectsStars.push({ 'id': project.id, 'stars': project.stars })
                 })
-
-                console.log(this.projectsStars);
-
             } catch (error) {
                 console.log(error)
             }
         },
         setSearchedProjects(value) {
-            console.log(value)
             if (value === 'Most Stars') {
                 this.searchProjects = this.projects
                 this.searchProjects = this.sortByStars().slice(0, 3)
@@ -82,16 +78,11 @@ export const useProjectStore = defineStore('projects', {
                 }
                 return 0
             })
-
-            console.log("SBSBSB", a, this.searchProjects)
             return a
         },
 
         rateProject(id, stars) {
-            console.log("rate id: " + id);
-            console.log("rate stars: " + stars);
             let oldStars = this.projectsStars.find(project => { return project.id === id });
-            console.log(oldStars)
             if (oldStars.stars === stars) {
                 this.searchProjects.forEach(project => {
                     if (project.id === id) {
@@ -103,11 +94,9 @@ export const useProjectStore = defineStore('projects', {
                 this.searchProjects.forEach(project => {
                     if (project.id === id) {
                         project.stars = project.stars - 1;
-                        console.log(project.stars);
                     }
                 });
             }
-
             this.searchProjects = this.sortByStars()
         }
     },
