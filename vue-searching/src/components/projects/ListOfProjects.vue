@@ -21,19 +21,19 @@ let searchProject = computed(() => {
 <template>
   <div>
     <table class="border border-red-500">
-      <thead>
+      <thead class="border-b">
         <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Date</th>
-          <th>Stars</th>
+          <th class="border-r" @click="store.sortByName()"><span>Name</span></th>
+          <th class="border-r"><span>Description</span></th>
+          <th class="border-r" @click="store.sortByDate()"><span>Date</span></th>
+          <th @click="store.sortByStars()"><span>Stars</span></th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="project in searchProject" :key="project.id">
-          <td>{{ project.name }}</td>
-          <td>{{ project.description }}</td>
-          <td>{{ project.createdAt }}</td>
+          <td class="border-r">{{ project.name }}</td>
+          <td class="border-r">{{ project.description }}</td>
+          <td class="border-r">{{ project.createdAt }}</td>
           <td>
             <span @click="store.rateProject(project.id, project.stars)"> {{ project.stars }} </span>
           </td>
