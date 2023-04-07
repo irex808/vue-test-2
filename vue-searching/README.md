@@ -40,7 +40,9 @@ npm run lint
 
 ## npm install -g json-server
 
----
+## npm install axios
+
+npm i pinia-plugin-persistedstate
 
 To boot up project with : -- > npm start
 
