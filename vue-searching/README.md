@@ -44,6 +44,8 @@ npm run lint
 
 npm i pinia-plugin-persistedstate
 
+npm i -D concurrently
+
 To boot up project with : -- > npm start
 
 ---
