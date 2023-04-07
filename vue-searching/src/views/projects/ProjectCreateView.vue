@@ -1,10 +1,10 @@
 <script setup>
-import ProjectCreate from '../../components/projects/ProjectCreate.vue';
+import ProjectCreate from '../../components/projects/ProjectCreate.vue'
 </script>
 <template>
-    <div class="projects">
+  <div class="projects">
     <ProjectCreate />
-</div>
+  </div>
 </template>
 <style>
 @media (min-width: 1024px) {
@@ -13,7 +13,7 @@ import ProjectCreate from '../../components/projects/ProjectCreate.vue';
     min-height: 100vh;
     align-items: top;
     text-align: center;
-    border-left: 1px;
+    border-top-width: 1px;
     border-color: black;
   }
 }
