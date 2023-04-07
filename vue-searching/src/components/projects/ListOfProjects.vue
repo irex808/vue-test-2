@@ -23,10 +23,10 @@ let searchProject = computed(() => {
     <table class="border border-red-500">
       <thead class="border-b">
         <tr>
-          <th class="border-r" @click="store.sortByName()"><span>Name</span></th>
+          <th class="border-r"><span @click="store.sortByName()">Name</span></th>
           <th class="border-r"><span>Description</span></th>
-          <th class="border-r" @click="store.sortByDate()"><span>Date</span></th>
-          <th @click="store.sortByStars()"><span>Stars</span></th>
+          <th class="border-r"><span @click="store.sortByDate()">Date</span></th>
+          <th><span @click="store.sortByStars()">Stars</span></th>
         </tr>
       </thead>
       <tbody>
