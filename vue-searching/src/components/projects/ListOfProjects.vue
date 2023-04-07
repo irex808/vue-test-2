@@ -2,11 +2,9 @@
 import { computed, onMounted } from 'vue'
 import { useProjectStore } from '../../stores/ProjectStore.js'
 let store = useProjectStore()
-let storageFull = localStorage.length
+let storageFull = localStorage.getItem('projects')
 onMounted(async () => {
-  if (storageFull === 0) {
-    await store.fetchProjects()
-  }
+  await store.fetchProjects()
 })
 
 let projects = computed(() => {
