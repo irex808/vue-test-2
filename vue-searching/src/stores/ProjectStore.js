@@ -81,6 +81,14 @@ export const useProjectStore = defineStore('projects', {
             return a
         },
 
+        sortByDate() {
+            const dates = this.searchProjects.sort(function (a, b) {
+                return Number(new Date(a.createdAt)) - Number(new Date(b.createdAt));
+            });
+            console.log(dates);
+            return dates;
+        },
+
         rateProject(id, stars) {
             let oldStars = this.projectsStars.find(project => { return project.id === id });
             if (oldStars.stars === stars) {
