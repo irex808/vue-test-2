@@ -33,3 +33,15 @@ npm run build
 ```sh
 npm run lint
 ```
+
+---
+
+## Instalation of json server
+
+## npm install -g json-server
+
+---
+
+To boot up project with : -- > npm start
+
+---
