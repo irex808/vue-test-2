@@ -1,6 +1,5 @@
 <script setup>
 import { computed, onMounted } from 'vue'
-import Project from './Project.vue'
 import { useProjectStore } from '../../stores/ProjectStore.js'
 let store = useProjectStore()
 let storageFull = localStorage.length
